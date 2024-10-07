@@ -7,6 +7,7 @@
   /* scroll */
   align-items: center;
 }
+
 /* left side */
 .awesome {
   display: flex;
@@ -116,21 +117,23 @@
   .works {
     flex-direction: column;
     height: 55rem;
-    padding: 0;
+    padding: 0 0 0 0; /* Set padding to zero for top */
     gap: 5rem;
+    margin-top: 1rem; /* Adjust this to create space from the top */
   }
 
   .w-right {
     display: flex;
     align-items: flex-start;
-    justify-content:start;
+    justify-content: start;
     transform: scale(0.7);
   }
-  .w-mainCircle{
+
+  .w-mainCircle {
     position: static;
   }
-  .w-backCircle{
-    left: 8rem!important;
-  }
 
+  .w-backCircle {
+    left: 8rem !important;
+  }
 }

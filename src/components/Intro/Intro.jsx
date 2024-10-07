@@ -29,7 +29,7 @@ const Intro = () => {
           <span style={{ color: darkMode ? "white" : "" }}>Hey! I Am</span>
           <span>SRUJAL SHETE</span>
           <span className="i-description" style={{ color: darkMode ? "#D3D3D3" : "black" }}>
-  "As a proficient Full-Stack Developer, I specialize in crafting dynamic and responsive user interfaces with React and Next.js. My expertise extends to backend technologies like Node.js and NestJS, as well as databases such as MongoDB. With a strong command of JavaScript and Express.js, I ensure seamless integration and functionality across the entire application stack."
+  As a proficient Full-Stack Developer, I specialize in crafting dynamic and responsive user interfaces with React and Next.js. My expertise extends to backend technologies like Node.js and NestJS, as well as databases such as MongoDB. With a strong command of JavaScript and Express.js, I ensure seamless integration and functionality across the entire application stack.
 </span>
         </div>
         <Link to="contact" smooth={true} spy={true}>

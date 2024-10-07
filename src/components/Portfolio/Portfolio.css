@@ -23,10 +23,14 @@
 .portfolio-slider {
   width: 100%;
   margin-top: 20px;
+  display: flex; /* Ensure flex is enabled for centering */
+  justify-content: center; /* Center horizontally */
 }
 
 .portfolio-slider .swiper-slide {
-  width: 100%;
+  display: flex; /* Flex to center the image inside the slide */
+  justify-content: center; /* Center the image */
+  align-items: center; /* Center vertically */
 }
 
 .portfolio img {
@@ -39,7 +43,9 @@
 
 @media screen and (max-width: 768px) {
   .portfolio-slider {
-    margin-top: 15px;
+    margin-top: 40px;
+    justify-content: center;  
+    margin-bottom: 0px;
   }
 
   .portfolio img {

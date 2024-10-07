@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Portfolio.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,7 +9,7 @@ import hoc from "../../img/hoc.png";
 import musicapp from "../../img/musicapp.jpg";
 import ecommerce from "../../img/ecommerce.jpg";
 
-// Example videos (not used in this case anymore)
+// Example projects
 const videos = [
   { img: ecommerce, alt: "Ecommerce" },
   { img: musicapp, alt: "Music App" },
@@ -20,6 +20,7 @@ const videos = [
 const Portfolio = () => {
   const { darkMode } = useContext(themeContext);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [slidesPerView, setSlidesPerView] = useState(3);
 
   const openModal = () => {
     setModalOpen(true);
@@ -29,6 +30,28 @@ const Portfolio = () => {
     setModalOpen(false);
   };
 
+  // Update slidesPerView based on screen width
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setSlidesPerView(1); // 1 slide on mobile
+      } else {
+        setSlidesPerView(3); // 3 slides on larger screens
+      }
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="portfolio" id="portfolio">
       {/* Heading */}
@@ -36,7 +59,7 @@ const Portfolio = () => {
       <span>Portfolio</span>
 
       {/* Slider */}
-      <Swiper spaceBetween={30} slidesPerView={3} grabCursor={true} className="portfolio-slider">
+      <Swiper spaceBetween={30} slidesPerView={slidesPerView} grabCursor={true} className="portfolio-slider">
         {videos.map(({ img, alt }, index) => (
           <SwiperSlide key={index}>
             <img src={img} alt={alt} onClick={openModal} />
@@ -44,7 +67,7 @@ const Portfolio = () => {
         ))}
       </Swiper>
 
-      {/* Error Modal */}
+      {/* Modal */}
       {isModalOpen && (
         <div className="modal fade show" style={{ display: 'block' }} tabIndex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
           <div className="modal-dialog modal-dialog-centered modal-sm" role="document"> 
